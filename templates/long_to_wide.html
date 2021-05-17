@@ -64,8 +64,8 @@
 					alert("File names must be different.")
 					return false;
 				}
-				if(new_x.length < 4 || y.length < 4 || new_x.substring(new_x.length - 4, new_x.length) != ".csv" || y.substring(y.length - 4, y.length) != ".csv") {
-					alert("File(s) must be a csv.")
+				if(new_x.length < 4 || y.length < 4 || y.substring(y.length - 4, y.length) != ".csv") {
+					alert("Uploaded file must be a csv.")
 					return false;
 				}
 				if(!document.getElementById("front_option").checked && !document.getElementById("back_option").checked) {
@@ -144,7 +144,7 @@
 					ondrop="event.stopPropagation(); event.preventDefault(); dodrop(event);">Drop file here</div>
 		  	</div>
 		  	<div class="well">
-		  		Enter the name you wish your new data file to have! (include .csv)<br>
+		  		Enter the name you wish your new data file to have! <br>
 					Note: Do NOT put the name of the long data file here.<br>
 		  		<input type="text" name="new_file_name" placeholder=" New File Name" id="text_field_2" value="">
 			</div>
