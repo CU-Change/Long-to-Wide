@@ -17,13 +17,38 @@ def index():
     clear_folder()
     return render_template('long_to_wide.html')
 
+@app.route("/sendfile", methods=["POST"])
+def send_file():
+    fileob = request.files["file2upload"]
+    filename = secure_filename(fileob.filename)
+    save_path = "{}/{}".format(app.config["UPLOAD_FOLDER"], filename)
+    fileob.save(save_path)
+
+    # open and close to update the access time.
+    with open(save_path, "r") as f:
+        pass
+
+    return "successful_upload"
 
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
     clear_folder()
-    f = request.files['original_file_name']
-    original_filename = secure_filename(f.filename)
-    f.save(os.path.join(app.config['UPLOAD_FOLDER'], original_filename))
+    try:
+        def modify_time_sort(file_name):
+            file_path = "uploads/{}".format(file_name)
+            file_stats = os.stat(file_path)
+            last_access_time = file_stats.st_atime
+            return last_access_time
+
+        filenames = os.listdir("uploads/")
+        filenames = sorted(filenames, key=modify_time_sort)
+        return_dict = dict(filenames=filenames)
+        original_filename = list(return_dict.values())[0]
+
+    except:
+        f = request.files['original_file_name']
+        original_filename = secure_filename(f.filename)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], original_filename))
 
     my_form = request.form
 
