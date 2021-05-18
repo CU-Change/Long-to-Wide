@@ -61,8 +61,7 @@ def handle_data():
     else:
         id_col = my_form['subject_id_col']
         tp_col = my_form['timepoint_col']
-
-    duplicates, missingTPs, isError, errors, isDupColumns = datafix_2.datafix2(original_filename, new_file, display_option, is_redcap, id_col, tp_col)
+    duplicates, missingTPs, isError, errors, isDupColumns, removedCol = datafix_2.datafix2(original_filename, new_file, display_option, is_redcap, id_col, tp_col)
 
     if isError:
         return handle_error(errors)
@@ -78,7 +77,7 @@ def handle_data():
             dupColumns = ''
 
         filename = new_file
-        return render_template('results.html', duplicates=duplicates, missingTPs=missingTPs, filename=filename, dupColumns=dupColumns)
+        return render_template('results.html', duplicates=duplicates, missingTPs=missingTPs, filename=filename, dupColumns=dupColumns, removedCol = removedCol)
 
 
 @app.route('/handle_error')

@@ -45,12 +45,15 @@
 		    <p>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</p>
 		  </div>
 			<br>
-	  <h>Duplicate ids/timepoints not included: {{duplicates|safe}}</h> 
+	  <h>Duplicate ids/timepoints not included: {{duplicates|safe}}</h>
 	  <br>
 	  <h>Missing timepoints not included: {{missingTPs|safe}}</h>
-			<br>
-			<h>{{dupColumns|safe}}</h>
-			<br>
+		<br>
+		<h>{{dupColumns|safe}}</h>
+		<br>
+		<h>{{removedCol|safe}}</h>
+		<br>
+		<br>
 			<div class="container" align="left">
 				<a href="{{ url_for('return_files', filename=filename) }}" target="blank"><button class='btn btn-default btn1' onclick="clickOtherButton()">Download!</button></a>
 				<br>
