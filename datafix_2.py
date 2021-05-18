@@ -1,6 +1,6 @@
 #!/usr/local/bin/python
 import pandas as pd
-
+import remove_empty_columns
 #check if redcap data is in raw or labels format based on columns, return boolean
 def isRedcapRaw(df):
     error = ''
@@ -141,5 +141,9 @@ def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
     if display_back == 'True':
         df.columns = df.columns.str.split('_', n=1).str[1] + '_' + df.columns.str.split('_', n=1).str[0]
 
+    #remove empty columns
+    df, removedCol = remove_empty_columns.remove_empty_columns(df)
+    if removedCol != '':
+        removedCol = '<div align="center">The following columns were empty for a specific time_point and dropped from the export:</div>  <div align="center"> '+removedCol+'</div> <div align="center">We did not drop columns that were potentially grouped with other non-empty columns.</div>'
     df.to_csv(path_to_file_new)
-    return duplicates, missingTPs, isAnyError, errors, isDupColumns
+    return duplicates, missingTPs, isAnyError, errors, isDupColumns, removedCol
