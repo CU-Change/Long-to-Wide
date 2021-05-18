@@ -34,6 +34,10 @@ def send_file():
 def handle_data():
     clear_folder()
     try:
+        f = request.files['original_file_name']
+        original_filename = secure_filename(f.filename)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], original_filename))
+    except:
         def modify_time_sort(file_name):
             file_path = "uploads/{}".format(file_name)
             file_stats = os.stat(file_path)
@@ -44,11 +48,6 @@ def handle_data():
         filenames = sorted(filenames, key=modify_time_sort)
         return_dict = dict(filenames=filenames)
         original_filename = list(return_dict.values())[0]
-
-    except:
-        f = request.files['original_file_name']
-        original_filename = secure_filename(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], original_filename))
 
     my_form = request.form
 
