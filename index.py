@@ -3,11 +3,27 @@ from flask import Flask, render_template, request, redirect, Response, send_from
 from werkzeug.utils import secure_filename
 import datafix_2
 import pandas as pd
+from flask_dropzone import Dropzone
 
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config.update(
+    UPLOAD_FOLDER=os.path.join(basedir, 'uploads'),
+    # Flask-Dropzone config:
+    DROPZONE_ALLOWED_FILE_CUSTOM=True,
+    DROPZONE_ALLOWED_FILE_TYPE=".csv",
+    DROPZONE_MAX_FILES=1,
+    DROPZONE_IN_FORM=True,
+    DROPZONE_UPLOAD_ON_CLICK=True,
+    DROPZONE_UPLOAD_ACTION='send_file',  # URL or endpoint
+    DROPZONE_UPLOAD_BTN_ID='submit_button',
+)
+
+dropzone = Dropzone(app)
+
 
 #TODO: files named the same thing as previous uploads output the same thing as the previous upload
 #rather than outputting the proper
@@ -19,24 +35,18 @@ def index():
 
 @app.route("/sendfile", methods=["POST"])
 def send_file():
-    fileob = request.files["file2upload"]
-    filename = secure_filename(fileob.filename)
-    save_path = "{}/{}".format(app.config["UPLOAD_FOLDER"], filename)
-    fileob.save(save_path)
-
-    # open and close to update the access time.
-    with open(save_path, "r") as f:
-        pass
-
-    return "successful_upload"
+    for key, f in request.files.items():
+        if key.startswith('file'):
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+    return 'upload complete'
 
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
-    clear_folder()
     try:
         f = request.files['original_file_name']
         original_filename = secure_filename(f.filename)
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], original_filename))
+
     except:
         def modify_time_sort(file_name):
             file_path = "uploads/{}".format(file_name)
@@ -47,7 +57,7 @@ def handle_data():
         filenames = os.listdir("uploads/")
         filenames = sorted(filenames, key=modify_time_sort)
         return_dict = dict(filenames=filenames)
-        original_filename = list(return_dict.values())[0]
+        original_filename = list(return_dict.values())[-1]
 
     my_form = request.form
 
