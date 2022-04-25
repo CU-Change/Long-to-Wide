@@ -5,7 +5,7 @@ import datafix_2
 import pandas as pd
 from flask_dropzone import Dropzone
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 UPLOAD_FOLDER = 'uploads'
 

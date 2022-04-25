@@ -1,96 +1,26 @@
 <!DOCTYPE html>
+
 <html>
+
 	<head>
 		<title>Long to Wide</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-		<style>
-			.dropzone, #text_field_1, #text_field_2 {
-				width: 80%;
-			}
-			.jumbotron {
-				background-color: rgba(0, 204, 220, 0.3);
-			}
-			#submit_button {
-				border-color: rgba(0, 204, 220, 0.3);
-				border-radius: 10px;
-				border-width: 5px;
-				padding: 10px;
-				margin-left: 45%;
+        <link rel="stylesheet" type="text/css" href="/static/css/drag_n_drop.css">
 
-			}
-			#form {
-				width: 70%;
-				margin-left: 15%;
-			}
-			.dropzone {
-			  background-color: white;
-			  border: solid black;
-			  border-width: 1px;
-			  height: 100px;
-			  text-align: center;
-			  line-height: 100px;
-			}
-		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-		<script>
+        <link rel="stylesheet" type="text/css" href="/static/js/drag_n_drop.js">
 
-			function validateForm() {
-				var x = '';
-				if(document.getElementById("droparea").textContent!="Drop file here"){
-					x = document.getElementById("droparea").textContent;
-				}
-				else {
-					x = document.getElementById("text_field_1").value;
-				}
-				var y = document.getElementById("text_field_2").value;
 
-				var newArr = x.split("\\")
-				var new_x = newArr[newArr.length-1]
-
-				if (new_x == "" || y == "") {
-					alert("File name(s) must be filled out.")
-					return false;
-				}
-				if(new_x === y) {
-					alert("File names must be different.")
-					return false;
-				}
-				if(new_x.length < 4 || y.length < 4 || y.substring(y.length - 4, y.length) != ".csv") {
-					alert("Uploaded file must be a csv.")
-					return false;
-				}
-				if(!document.getElementById("front_option").checked && !document.getElementById("back_option").checked) {
-					alert("Must select a naming option (front or back).")
-					return false;
-				}
-			}
-
-			function displayQuestion(answer) {
-
-				if (answer == "False") {
-
-  					document.getElementById('subject_id_column').style.display = "block";
-					document.getElementById('timepoint_column').style.display = "block";
-
-				} else if (answer == "True") {
-
-					document.getElementById('subject_id_column').style.display = "none";
-					document.getElementById('timepoint_column').style.display = "none";
-
-				}
-
-			}
-
-		</script>
         {{ dropzone.load_css() }}
-        {{ dropzone.style('dorder: 2px dashed #0087F7; margin 10%; min-height: 400px;') }}
+        {{ dropzone.style('border: 2px dashed #141617; border-radius: 25px; margin: auto; min-height: 250px;
+        width: 400px') }}
 	</head>
 
 	<body>
 
-		<div class="container">
+		<div class="form">
 
 		  <div class="jumbotron">
 		    <h1>Long to Wide</h1>
@@ -103,9 +33,7 @@
 		  	<div class="well">
 		  		Choose the long data file you wish to convert. <br>
 					NOTE: The file must be .csv <br>
-
-                 <input type="file" id="text_field_1" name="original_file_name">
-                    {{ dropzone.create(id='text_field_1')}}
+                    {{ dropzone.create()}}
 
 		  	</div>
 
