@@ -14,25 +14,26 @@
 
 
         {{ dropzone.load_css() }}
-        {{ dropzone.style('border: 2px dashed #141617; border-radius: 25px; margin: auto; min-height: 250px;
-        width: 400px') }}
+        {{ dropzone.style('background-color: #e9faff; border: 2px dashed #141617; border-radius: 10px;
+         margin: auto; min-height: 250px; width: 400px') }}
 	</head>
 
-	<body>
+	<body class="body">
 
 		<div class="form">
 
 		  <div class="jumbotron">
-		    <h1>Long to Wide</h1>
-		    <p>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</p>
+		    <h2 class="titles">Long to Wide</h2>
+		    <p>Convert your data from long format to wide format. With wide format, each row will contain every
+                timepoint for each record.</p>
 		  </div>
-		  <p> Note: only csv files will be accepted. </p>
 
-
-		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}" method='POST' enctype = "multipart/form-data">
+		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}"
+                method='POST' enctype = "multipart/form-data">
 		  	<div class="well">
 		  		Choose the long data file you wish to convert. <br>
 					NOTE: The file must be .csv <br>
+                                                <br>
                     {{ dropzone.create()}}
 
 		  	</div>

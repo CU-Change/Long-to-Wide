@@ -4,7 +4,23 @@
 			}
 
 .jumbotron {
-	background-color: rgba(0, 204, 220, 0.3);
+	background-color: white;
+	border-radius: 10px;
+	padding-left: 20px;
+}
+
+.well{
+	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.body{
+	background-color: #e9faff;
+}
+
+.titles{
+	font-size: 30px;
 }
 
 .jubmit_button {
@@ -19,4 +35,5 @@
 .form {
 	width: 40%;
 	margin: auto;
+
 }
