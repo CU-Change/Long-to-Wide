@@ -94,7 +94,9 @@ def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
     isAnyError = False
     errors = []
 
-    old_file_path = 'uploads/' + filename
+    print(filename[-1])
+
+    old_file_path = 'uploads/' + filename[-1]
     path_to_file_new = 'uploads/' + wide_filename
 
     #create dataframe

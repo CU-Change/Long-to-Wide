@@ -2,9 +2,10 @@
 <html>
 	<head>
 		<title>Long to Wide</title>
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		<style>
-			#droparea, #text_field_1, #text_field_2 {
+			.dropzone, #text_field_1, #text_field_2 {
 				width: 80%;
 			}
 			.jumbotron {
@@ -22,7 +23,7 @@
 				width: 70%;
 				margin-left: 15%;
 			}
-			#droparea {
+			.dropzone {
 			  background-color: white;
 			  border: solid black;
 			  border-width: 1px;
@@ -34,15 +35,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<script>
-			function detectFirefox(){
-				if(navigator.userAgent.indexOf("Firefox")!= -1){
-					return true;
-				}
-				else{
-					return false;
-				}
 
-			}
 			function validateForm() {
 				var x = '';
 				if(document.getElementById("droparea").textContent!="Drop file here"){
@@ -90,36 +83,9 @@
 
 			}
 
-			function dodrop(event){
-
-			  var files = event.dataTransfer.files;
-			  var filename = files[0].name
-			  var newArr = filename.split("\\");
-			  var new_filename = newArr[newArr.length-1];
-				var firefox = detectFirefox();
-				if (!firefox){
-					alert("Can't use drag and drop because browser is not Firefox")
-				}
-				else {
-					if(new_filename.length >= 4 && new_filename.substring(new_filename.length - 4, new_filename.length) == ".csv"){
-				    document.getElementById('droparea').textContent = filename
-						var formData = new FormData();
-		        formData.append("file2upload", files[0]);
-
-		        $.ajax({
-							url: "/sendfile",
-							method: "post",
-							processData: false,
-							contentType: false,
-							data: formData
-						});
-				  }
-				  else{
-				    alert("Uploaded file must be a csv.")
-				  }
-				}
-			}
 		</script>
+        {{ dropzone.load_css() }}
+        {{ dropzone.style('dorder: 2px dashed #0087F7; margin 10%; min-height: 400px;') }}
 	</head>
 
 	<body>
@@ -136,13 +102,13 @@
 		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}" method='POST' enctype = "multipart/form-data">
 		  	<div class="well">
 		  		Choose the long data file you wish to convert. <br>
-					If you are using Firefox then you may drag and drop your file into the box below. <br>
 					NOTE: The file must be .csv <br>
-		  		<input type="file" name="original_file_name" id="text_field_1" value="">
-					<div id="droparea" ondragenter="event.stopPropagation(); event.preventDefault();"
-				  ondragover="event.stopPropagation(); event.preventDefault();"
-					ondrop="event.stopPropagation(); event.preventDefault(); dodrop(event);">Drop file here</div>
+
+                 <input type="file" id="text_field_1" name="original_file_name">
+                    {{ dropzone.create(id='text_field_1')}}
+
 		  	</div>
+
 		  	<div class="well">
 		  		Enter the name you wish your new data file to have! <br>
 					Note: Do NOT put the name of the long data file here.<br>
@@ -176,8 +142,11 @@
 		 	<input type="submit" value="Submit" id="submit_button">
 
 		  </form>
+            {{ dropzone.load_js() }}
+            {{dropzone.config()}}
 
 		</div>
+
 	</body>
 
 </html>
