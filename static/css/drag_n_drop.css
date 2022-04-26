@@ -1,0 +1,39 @@
+#text_field_1, #text_field_2 {
+	width: 80%;
+
+			}
+
+.jumbotron {
+	background-color: white;
+	border-radius: 10px;
+	padding-left: 20px;
+}
+
+.well{
+	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.body{
+	background-color: #e9faff;
+}
+
+.titles{
+	font-size: 30px;
+}
+
+.jubmit_button {
+	border-color: rgba(0, 204, 220, 0.3);
+	border-radius: 10px;
+	border-width: 5px;
+	padding: 10px;
+	margin-left: 45%;
+
+}
+
+.form {
+	width: 40%;
+	margin: auto;
+
+}
