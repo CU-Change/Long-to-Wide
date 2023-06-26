@@ -108,7 +108,7 @@ def return_files(filename):
     try:
         source = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
 
-        return send_from_directory(source, filename=filename, as_attachment=True, mimetype='text/csv' ,attachment_filename=filename)
+        return send_from_directory(directory=source, path=filename, as_attachment=True, mimetype='text/csv' ,download_name=filename)
     except Exception as e:
         return str(e)
 

@@ -6,14 +6,17 @@ function validateForm() {
 				else {
 					x = document.getElementById("text_field_1").value;
 				}
-				var y = document.getElementById("text_field_2").value;
+				var y = "test2.csv";
 
 				var newArr = x.split("\\")
 				var new_x = newArr[newArr.length-1]
 
-				if (new_x == "" || y == "") {
+				if (new_x == "") {
 					alert("File name(s) must be filled out.")
 					return false;
+				}
+				if (y == ""){
+					y.value = "wide_export.csv"
 				}
 				if(new_x === y) {
 					alert("File names must be different.")

@@ -94,8 +94,6 @@ def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
     isAnyError = False
     errors = []
 
-    print(filename[-1])
-
     old_file_path = 'uploads/' + filename[-1]
     path_to_file_new = 'uploads/' + wide_filename
 
@@ -108,19 +106,19 @@ def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
         if isErrorRaw: #check for errors from redcap raw check
             isAnyError = True
             errors.append(errorRaw)
-            return None, None, isAnyError, errors, None
+            return None, None, isAnyError, errors, None, None
 
         df, isErrorTp, errorTp = redcapLabelTimepoint(df, redcapRaw)
         if isErrorTp: #check for errors from redcap timepoint label
             isAnyError = True
             errors.append(errorTp)
-            return None, None, isAnyError, errors
+            return None, None, isAnyError, errors, None, None
 
         id_col, isErrorId, errorId = getIdCol(df, redcapRaw)
         if isErrorId: #check for errors from getting redcap ID column
             isAnyError = True
             errors.append(errorId)
-            return None, None, isAnyError, errors, None
+            return None, None, isAnyError, errors, None, None
 
         tp_col = 'tp'
 
