@@ -5,35 +5,51 @@
 
 .jumbotron {
 	background-color: white;
-	border-radius: 10px;
+	font-size: 15px;
+	margin-top: 20px;
+	border-radius: 20px;
 	padding-left: 20px;
+	padding-right 30px;
+	font-family: Tahoma, sans-serif;
+}
+
+.img {
+      display: block;
+      width: 50px;
+      height: auto;
 }
 
 .well{
-	padding: 10px;
+	padding: 20px;
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 30px;
+	font-size: 15px;
+	font-family: Tahoma, sans-serif;
 }
 
 .body{
-	background-color: #e9faff;
+	background-color: #e9dfc4;
 }
 
 .titles{
-	font-size: 30px;
+	font-size: 40px;
+	font-family: Tahoma, sans-serif;
 }
 
-.jubmit_button {
+.submit_button{
 	border-color: rgba(0, 204, 220, 0.3);
-	border-radius: 10px;
-	border-width: 5px;
+	border-radius: 30px;
+	border-width: 30px;
+	width: 200px;
+    height: auto;
 	padding: 10px;
 	margin-left: 45%;
-
+	font-family: Tahoma, sans-serif;
 }
 
 .form {
 	width: 40%;
 	margin: auto;
+	margin-bottom: 90px;
 
 }

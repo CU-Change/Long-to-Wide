@@ -3,29 +3,30 @@
 <html>
 
 	<head>
-		<title>Long to Wide</title>
+		<title>Long to Wide Converter</title>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/static/css/drag_n_drop.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="/static/js/drag_n_drop.js">
+        <script src="/static/js/drag_n_drop.js"></script>
 
 
         {{ dropzone.load_css() }}
-        {{ dropzone.style('background-color: #e9faff; border: 2px dashed #141617; border-radius: 10px;
-         margin: auto; min-height: 250px; width: 400px') }}
+        {{ dropzone.style('background-color: #e9dfc4; border: 2px dashed #141617; border-radius: 10px;
+         margin: auto; min-height: 250px; width: 400px; font-family: Tahoma, sans-serif;') }}
 	</head>
 
 	<body class="body">
+    <img src="https://pbs.twimg.com/profile_banners/4332510274/1519329562/1500x500" alt="Header Image">
 
 		<div class="form">
 
 		  <div class="jumbotron">
-		    <h2 class="titles">Long to Wide</h2>
-		    <p>Convert your data from long format to wide format. With wide format, each row will contain every
-                timepoint for each record.</p>
+              <h2 class="titles">Long to Wide Converter</h2>
+		    <p><small>Convert your data from long format to wide format. With wide format, each row will contain every
+                timepoint for each record.</small></p>
 		  </div>
 
 		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}"
@@ -35,36 +36,35 @@
 					NOTE: The file must be .csv <br>
                                                 <br>
                     {{ dropzone.create()}}
+		  	    </div>
 
-		  	</div>
-
-		  	<div class="well">
+            <div class="well">
 		  		Enter the name you wish your new data file to have! <br>
 					Note: Do NOT put the name of the long data file here.<br>
 		  		<input type="text" name="new_file_name" placeholder=" New File Name" id="text_field_2" value="">
-			</div>
+                </div>
 
 		  	<div class="well">
-		  		Would you like your column names to have the timepoint at the front or the back of the variable name (e.g T01_task vs. task_T01)?
+		  		Would you like your column names to have the timepoint at the front or the back of the variable name (e.g. T01_task vs. task_T01)?
 		  		<br>
 		  		<input type="radio" name="timeptdisplay" id="front_option" value="False">  Front<br>
 		  		<input type="radio" name="timeptdisplay" id="back_option" value="True">  Back<br>
 			  </div>
 
 			<div class="well">
-				Is the csv from a Redcap export (eg is "redcap_event_name" used as the time point column name)?
+				Is the file from a Redcap export? (e.g. is "redcap_event_name" used as the time point column name)?
 				<br>
 				<input type="radio" name="isredcap" id="is_redcap_yes" value="True" onchange="displayQuestion(this.value)">  Yes<br>
 				<input type="radio" name="isredcap" id="is_redcap_no" value="False" onchange="displayQuestion(this.value)">  No<br>
 			</div>
 
-			<div class="well" style="display: none" id="subject_id_column">
-				Enter the title of the column that contains the subject IDs<br>
+			<div class="well" style="block" id="subject_id_column">
+				Enter the exact title of the column that contains the subject IDs:<br>
 				<input type="text" name="subject_id_col" placeholder=" Subject ID Column" id="text_field_3" value="">
 		  	</div>
 
-		  	<div class="well" style="display: none" id="timepoint_column">
-			  	Enter the title of the column that contains the timepoints<br>
+		  	<div class="well" style="block" id="timepoint_column">
+			  	Enter the exact title of the column that contains the timepoints:<br>
 				<input type="text" name="timepoint_col" placeholder=" Timepoint Column" id="text_field_4" value="">
 	  		</div>
 
