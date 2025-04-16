@@ -3,64 +3,41 @@
 	<head>
 		<title>Long to Wide</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-		<style>
-			.jumbotron {
-				background-color: rgba(0, 204, 220, 0.3);
-			}
-			h {
-				margin-left: 19%;
-				font-size: 20px;
-			}
 
-			.btn-default {
-				border-color: rgba(0, 204, 220, 0.3);
-				border-radius: 10px;
-				border-width: 5px;
-				padding: 10px;
-				margin-left: 40%;
-			}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 
-			.btn2 {
-				margin-left: 37.8%;
-			}
-
-		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 		<script>
-
 			function clickOtherButton(){
 				document.getElementById('btn2').click()
 			}
 		</script>
 
 	</head>
-	<body>
+	<body class="body">
 
-		<div class="container">
+		<div class="form">
 
 		  <div class="jumbotron">
-		    <h1>Long to Wide</h1>
-		    <p>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</p>
+        <h2 class="titles">Long to Wide Converter</h2>
+		    <p><small>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</small></p>
 		  </div>
-			<br>
-     		<h> {{message1|safe}}</h>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-   		</div>
 
-			<div class="container" align="left">
-				<form action="/">
-					<button class='btn btn-default btn2'>Convert a new file!</button></a>
-				</form>
-   		</div>
-
+      <form action="/">
+        <div class="well">
+          <h>{{message1|safe}}</h>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-default btn2">Convert a new file!</button>
+        </div>
+      </form>
+      <div class="footer-space"></div>
 		</div>
 
+    <img src="https://cdn.colorado.edu/static/brand-assets/live/images/cu-boulder-logo-text-black.svg" alt="Header Image">
 	</body>
 
 </html>

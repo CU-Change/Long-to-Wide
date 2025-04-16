@@ -1,44 +1,19 @@
-#text_field_1, #text_field_2 {
-	width: 80%;
-
-			}
-
-.jumbotron {
-	background-color: white;
-	font-size: 15px;
-	margin-top: 20px;
-	border-radius: 20px;
-	padding-left: 20px;
-	padding-right 30px;
+.dz-default.dz-message {
 	font-family: Tahoma, sans-serif;
+	color: #444;
+	font-size: 16px;
 }
 
-.img {
-      display: block;
-      width: 100px;
-      height: auto;
+.dropzone:hover,
+.dropzone.dz-drag-hover {
+    background-color: #f0f4f8;
+    border-color: #999;
+    transition: 0.2s ease;
 }
 
-.well{
-	padding: 20px;
-	background-color: white;
-	border-radius: 30px;
-	font-size: 15px;
-	font-family: Tahoma, sans-serif;
-}
-
-.body{
-	background-color: #e9dfc4;
-}
-
-.titles{
-	font-size: 40px;
-	font-family: Tahoma, sans-serif;
-}
-
-.submit_button{
+.submit_button {
 	border-color: rgba(0, 204, 220, 0.3);
-	border-radius: 30px;
+	border-radius: 8px;
 	border-width: 30px;
 	width: 200px;
     height: auto;
@@ -47,9 +22,50 @@
 	font-family: Tahoma, sans-serif;
 }
 
-.form {
-	width: 40%;
-	margin: auto;
-	margin-bottom: 90px;
+.submit_button:hover {
+    background-color: #00ccdc20;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+/* File preview container */
+.dz-preview.dz-file-preview {
+    background: #f8f9fb !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    padding: 10px 16px !important;
+    max-width: 100px;
+    margin: 10px auto;
+	display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 12px;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dz-preview .dz-image {
+    display: none !important; /* Hide the default image thumbnail */
+}
+
+.dz-preview .dz-size {
+    font-size: 12px !important;
+    color: #666 !important;
+    font-family: 'Nunito', sans-serif !important;
+	min-width: 40px;
+    text-align: center;
+}
+
+.dz-preview .dz-filename {
+    font-size: 14px !important;
+    color: #333 !important;
+    font-family: 'Nunito', sans-serif !important;
+    word-break: break-word;
+	max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

@@ -1,9 +1,30 @@
-gunicorn==19.9.0
+# Flask
+blinker==1.9.0
+click==8.1.8
+Flask==3.1.0
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+Werkzeug==3.1.3
+
+# Drag and Drop
+Flask-Dropzone==2.0.0
+
+# Pandas: Data transformations
+numpy==2.2.4
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+tzdata==2025.2
+
+# Requests
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
 requests==2.21.0
-Flask==2.3.2
-itsdangerous==2.1.2
-Jinja2==3.1.2
-MarkupSafe==2.1.1
-Werkzeug==2.3.3
-flask_dropzone==1.6.0
-pandas==1.4.4
+urllib3==2.4.0
+
+# Procfile
+gunicorn==23.0.0
+packaging==24.2

@@ -5,44 +5,51 @@
 	<head>
 		<title>Long to Wide Converter</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/static/css/drag_n_drop.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/drag_n_drop.css') }}">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <script src="/static/js/drag_n_drop.js"></script>
+    <script src="/static/js/drag_n_drop.js"></script>
 
-
-        {{ dropzone.load_css() }}
-        {{ dropzone.style('background-color: #e9dfc4; border: 2px dashed #141617; border-radius: 10px;
-         margin: auto; min-height: 250px; width: 400px; font-family: Tahoma, sans-serif;') }}
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('
+      background-color: #fdfdfd;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      margin: auto;
+      min-height: 250px;
+      width: 100%;
+      max-width: 500px;
+      font-family: "Nunito", sans-serif;
+      color: #666;
+    ') }}
 	</head>
 
 	<body class="body">
-    <img src="https://lh3.googleusercontent.com/pw/AJFCJaWSKGnmmxSBdDIVVFzFDeckOYGnlV3sVJQU7sZyEtaim_zI78fQ2IdmtrFwDglyt2wp_7J8doqBF-KUDAUmkZKwiaMUyvh3sAMW_nWsJfrQjuXcVb7S5sOQd3stIA6-PGiyUxbpnQiLwFyaM0RVdtW2mQM6PmzzEgQRX5F7M7RhW1EOmzQnRghhAVBc-Or0k60zlUJo2Tt6uMQnOAnYw_ZW0gUBqdG3IDlRBGYAmc1EjunnWqGLM3ENXUrnLYewQIquv06Ej0ftCODUsPEzgoG1Kupb6NjqTJrOn5FQi5ip25VuMTcP7_T83HvTvMhpWZOGkUtoKzmOzQn6VfujzthE2NgWjmAvGWeOAGKW_cz5PDlR2zU0mFR86wFiTaTs7cO4N2UwaNmfYTfaydz9p7sSyZ3HwwI2g7BBrbXmepe4JyQ_bG3RCZP2KRS8gGFJdvcSbuhoye74-2EU5gMogamftiT4WpQ5q4a_WeS9pV3ak4HQ5Klxp-SCvwiYfX7DbaMn5S5dmLxsJDsoIJ95y6SjOzkpVImXa4LcoW5dWaN4IgRpih_rG6uict6eW3YJoDWNmi2GORlCKCsYvWONBocsjXqln-DsVhUv0HRFGrtyErOGsysSVztHYmxi1UrAlbRGfpK9L_Cj85ii41XzCcWYBilXcmVPu8DbmBwYq2NtWUbMNNZICN72Llu2Nc0mdU8phjT49sju7kpRBT-92dTfNT-IaIDexv6KQG1VaYrznn9OGNutn0FIeRr9VVougu4s5S8PVmbkdg0-Ca3_SFuisFJImUYgc2t7Zb4jRW46OMrQDhBrdMf4DZdh6JvnH0JhFT8OWUBwPrSyspaAjF6os_Z1SCMJWKMVXU947NkED0vdAAXcC0cvMYl5kDkkqhSRn0XXB3C_JY19aQE1YyiH2g=w1500-h300-s-no?authuser=0" alt="Header Image">
-
 		<div class="form">
 
 		  <div class="jumbotron">
-              <h2 class="titles">Long to Wide Converter</h2>
-		    <p><small>Convert your data from long format to wide format. With wide format, each row will contain every
-                timepoint for each record.</small></p>
+        <h2 class="titles">Long to Wide Converter</h2>
+		    <p><small>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</small></p>
 		  </div>
 
-		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}"
-                method='POST' enctype = "multipart/form-data">
+		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}" method='POST' enctype = "multipart/form-data">
 		  	<div class="well">
 		  		Choose the long data file you wish to convert. <br>
 					NOTE: The file must be .csv <br>
-                                                <br>
-                    {{ dropzone.create()}}
-		  	    </div>
+          <br>
+          {{ dropzone.create()}}
+        </div>
 
-            <div class="well">
+        <div class="well">
 		  		Enter the name you wish your new data file to have! <br>
 					Note: Do NOT put the name of the long data file here.<br>
 		  		<input type="text" name="new_file_name" placeholder=" New File Name" id="text_field_2" value="">
-                </div>
+        </div>
 
 		  	<div class="well">
 		  		Would you like your column names to have the timepoint at the front or the back of the variable name (e.g. T01_task vs. task_T01)?
@@ -75,6 +82,8 @@
             {{dropzone.config()}}
 
 		</div>
+
+    <img src="https://cdn.colorado.edu/static/brand-assets/live/images/cu-boulder-logo-text-black.svg" alt="Header Image">
 
 	</body>
 

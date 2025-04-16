@@ -5,7 +5,7 @@ import re
 def mark_empty_columns(df):
     #create a list of tuples (colname: empty True/False)
     col_list = []
-    for (colname, colval) in df.iteritems():
+    for (colname, colval) in df.items():
         is_null = colval.isnull().values.all()
         col_dict = {}
         col_dict['name'] = colname
