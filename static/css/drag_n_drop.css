@@ -1,44 +1,35 @@
 #text_field_1, #text_field_2 {
 	width: 80%;
-
-			}
-
-.jumbotron {
-	background-color: white;
-	font-size: 15px;
-	margin-top: 20px;
-	border-radius: 20px;
-	padding-left: 20px;
-	padding-right 30px;
-	font-family: Tahoma, sans-serif;
 }
 
-.img {
-      display: block;
-      width: 100px;
-      height: auto;
+img {
+	max-width: 20%;
+	height: auto;
+	margin: 20px auto;
+	display: block;
+	border-radius: 8px;
 }
 
-.well{
+.well {
 	padding: 20px;
 	background-color: white;
-	border-radius: 30px;
+	border-radius: 10px;
 	font-size: 15px;
 	font-family: Tahoma, sans-serif;
 }
 
-.body{
-	background-color: #e9dfc4;
+.body {
+	background: linear-gradient(to bottom right, #f5f7fa, #e4e7ed);
 }
 
-.titles{
+.titles {
 	font-size: 40px;
 	font-family: Tahoma, sans-serif;
 }
 
-.submit_button{
+.submit_button {
 	border-color: rgba(0, 204, 220, 0.3);
-	border-radius: 30px;
+	border-radius: 8px;
 	border-width: 30px;
 	width: 200px;
     height: auto;
@@ -48,8 +39,47 @@
 }
 
 .form {
-	width: 40%;
-	margin: auto;
-	margin-bottom: 90px;
+	width: 90%;
+	max-width: 700px;
+	margin: 40px auto 90px auto;
+	padding: 30px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
+.jumbotron {
+	background-color: white;
+	font-size: 16px;
+	margin-top: 0;
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"] {
+	width: 100%;
+	padding: 12px 16px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 14px;
+	margin-top: 8px;
+	box-sizing: border-box;
+}
+
+.dz-default.dz-message {
+	font-family: Tahoma, sans-serif;
+	color: #444;
+	font-size: 16px;
+}
+
+body, input, .jumbotron, .titles {
+    font-family: 'Nunito', sans-serif;
+}
+
+.dropzone:hover,
+.dropzone.dz-drag-hover {
+    background-color: #f0f4f8;
+    border-color: #999;
+    transition: 0.2s ease;
 }
