@@ -1,82 +1,14 @@
-body, input, .jumbotron, .titles {
-    font-family: 'Nunito', sans-serif;
-}
-
-.body {
-	background: linear-gradient(to bottom right, #f5f7fa, #e4e7ed);
-}
-
-.titles {
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-#text_field_1, #text_field_2 {
-	width: 80%;
-}
-
-.jumbotron {
-	background-color: white;
-	font-size: 16px;
-	margin-top: 0;
-	padding: 30px;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
 .dz-default.dz-message {
 	font-family: Tahoma, sans-serif;
 	color: #444;
 	font-size: 16px;
 }
 
-
-
 .dropzone:hover,
 .dropzone.dz-drag-hover {
     background-color: #f0f4f8;
     border-color: #999;
     transition: 0.2s ease;
-}
-
-/* LOGO */
-
-img {
-	max-width: 20%;
-	height: auto;
-	margin: 20px auto;
-	display: block;
-	border-radius: 8px;
-}
-
-/* Input Wrapping */
-
-.well {
-	padding: 20px;
-	background-color: white;
-	border-radius: 10px;
-	font-size: 15px;
-	font-family: Tahoma, sans-serif;
-}
-
-input[type="text"] {
-	width: 100%;
-	padding: 12px 16px;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	font-size: 14px;
-	margin-top: 8px;
-	box-sizing: border-box;
-}
-
-.form {
-	width: 90%;
-	max-width: 700px;
-	margin: 40px auto 90px auto;
-	padding: 30px;
-	background-color: white;
-	border-radius: 8px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .submit_button {

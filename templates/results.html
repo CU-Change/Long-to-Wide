@@ -2,68 +2,65 @@
 <html>
 	<head>
 		<title>Long to Wide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-		<style>
-			.jumbotron {
-				background-color: rgba(233, 223, 196, 0.3);
-			}
-			h {
-				margin-left: 19%;
-				font-size: 20px;
-			}
 
-			.btn-default {
-				border-color: rgba(233, 223, 196, 0.3);
-				border-radius: 10px;
-				border-width: 5px;
-				padding: 10px;
-				margin-left: 40%;
-			}
-
-			.btn2 {
-				margin-left: 37.8%;
-			}
-
-		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 		<script>
-
 			function clickOtherButton(){
 				document.getElementById('btn2').click()
 			}
 		</script>
 
 	</head>
-	<body>
-
-		<div class="container">
-
-		  <div class="jumbotron">
-		    <h1>Long to Wide</h1>
-		    <p>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</p>
+	<body class="body">
+    <div class="form">
+      <div class="jumbotron">
+        <h2 class="titles">Long to Wide Converter</h2>
+		    <p><small>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</small></p>
 		  </div>
-			<br>
-	  <h>Duplicate ids/timepoints not included: {{duplicates|safe}}</h>
-	  <br>
-	  <h>Missing timepoints not included: {{missingTPs|safe}}</h>
-		<br>
-		<h>{{dupColumns|safe}}</h>
-		<br>
-		<h>{{removedCol|safe}}</h>
-		<br>
-		<br>
-			<div class="container" align="left">
-				<a href="{{ url_for('return_files', filename=filename) }}" target="blank"><button class='btn btn-default btn1' onclick="clickOtherButton()">Download!</button></a>
-				<br>
-				<br>
-				<form action="/">
-					<button class='btn btn-default btn2'>Convert a new file!</button></a>
-				</form>
-   		</div>
 
-		</div>
-	</body>
+      <div class="well">
+        <p class="section-header">Duplicate ids/timepoints not included: {{duplicates|safe}}</p>
+        <p class="section-header">Missing timepoints not included: {{missingTPs|safe}}</p>
+        <details class="columns-box">
+          {% if dupColumns %}
+            <summary>View duplicate columns</summary>
+            {{ dupColumns|safe }}
+          {% else %}
+            <summary>No duplicate columns</summary>
+          {% endif %}
+        </details>
+        <details class="columns-box">
+          {% if removedCol %}
+            <summary>View dropped columns</summary>
+            {{ removedCol|safe }}
+          {% else %}
+            <summary>No dropped columns</summary>
+          {% endif %}
+        </details>
+      </div>
+
+
+      <div class="button-row">
+        <a href="{{ url_for('return_files', filename=filename) }}" target="_blank">
+          <button class="btn btn-default btn1">Download!</button>
+        </a>
+
+        <form action="/">
+          <button class="btn btn-default btn2">Convert a new file!</button>
+        </form>
+      </div>
+      <div class="footer-space"></div>
+    </div>
+
+    <img src="https://cdn.colorado.edu/static/brand-assets/live/images/cu-boulder-logo-text-black.svg" alt="Header Image">
+  </body>
 
 </html>
