@@ -93,12 +93,17 @@ def checkDupColumns(df):
 def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
     isAnyError = False
     errors = []
-
-    old_file_path = 'uploads/' + filename[-1]
+    filename = filename[-1]
+    old_file_path = 'uploads/' + filename
     path_to_file_new = 'uploads/' + wide_filename
 
-    #create dataframe
-    df = pd.read_csv(old_file_path)#, keep_default_na=False, na_values=['#N/A', '#N/A N/A', '#NA', '-1.#IND', '-1.#QNAN', '-NaN', '-nan', '1.#IND', '1.#QNAN', 'N/A', 'NA', 'NULL', 'NaN', 'n/a', 'nan', 'null']) #can change to keep certain NA values rather than turn to blanks, also need to change checkMissing function
+    # Keep_default_na=False, na_values=['#N/A', '#N/A N/A', '#NA', '-1.#IND', '-1.#QNAN', '-NaN', '-nan', '1.#IND', '1.
+    # QNAN', 'N/A', 'NA', 'NULL', 'NaN', 'n/a', 'nan', 'null'])
+    # can change to keep certain NA values rather than turn to blanks, also need to change checkMissing function
+    if filename.endswith('.xlsx'):
+        df = pd.read_excel(old_file_path)
+    else:
+        df = pd.read_csv(old_file_path)
 
     #if redcap csv, get subject id column and set timepoint column to tp
     if is_redcap == 'True':
