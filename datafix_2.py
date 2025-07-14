@@ -5,7 +5,6 @@ import remove_empty_columns
 def isRedcapRaw(df):
     error = ''
     isError = False
-
     if 'record_id' in df.columns or 'subid' in df.columns:
         return True, isError, error
     elif 'Record ID' in df.columns or 'Subject ID' in df.columns or 'Participant ID':
@@ -19,6 +18,7 @@ def isRedcapRaw(df):
 def redcapLabelTimepoint(df, redcapRaw):
     error = ''
     isError = False
+    print(list(df.columns))
 
     if 'Timepoint' in df.columns:
         df = df.rename(columns={'Timepoint':'tp'})
@@ -103,7 +103,12 @@ def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
     if filename.endswith('.xlsx'):
         df = pd.read_excel(old_file_path)
     else:
-        df = pd.read_csv(old_file_path)
+        try:
+            df = pd.read_csv(old_file_path)
+        except:
+            print(old_file_path)
+            df = pd.read_csv(old_file_path, encoding="ISO-8859-1")
+            print(df)
 
     #if redcap csv, get subject id column and set timepoint column to tp
     if is_redcap == 'True':
@@ -133,7 +138,7 @@ def datafix2(filename, wide_filename, display_back, is_redcap, id_col, tp_col):
             isAnyError = True
             inputError = 'Input id or timepoint column not in csv'
             errors.append(inputError)
-            return None, None, isAnyError, errors, None
+            return None, None, isAnyError, errors, None, None
 
     df, missingTPs = checkMissing(df, id_col, tp_col) #check for missing timepoints
     df, duplicates = checkDups(df, id_col, tp_col) #check for duplicate id/timepoint combinations

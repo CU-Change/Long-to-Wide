@@ -37,13 +37,18 @@
 		    <p><small>Convert your data from long format to wide format. With wide format, each row will contain every timepoint for each record.</small></p>
 		  </div>
 
+      <!-- 🟩 Dropzone File Upload Form (separate) -->
+      <div class="well">
+        Choose the long data file you wish to convert. <br>
+        NOTE: The file must be .csv <br>
+        <br>
+        <form action="{{ url_for('send_file') }}" class="dropzone" id="dropzoneForm" method="POST" enctype="multipart/form-data">
+        </form>
+      </div>
+
+      <!-- 🟦 Main Metadata Submission Form -->
 		  <form name="myForm" onsubmit="return validateForm()" id="form" action="{{ url_for('handle_data') }}" method='POST' enctype = "multipart/form-data">
-		  	<div class="well">
-		  		Choose the long data file you wish to convert. <br>
-					NOTE: The file must be .csv <br>
-          <br>
-          {{ dropzone.create()}}
-        </div>
+
 
         <div class="well">
 		  		Enter the name you wish your new data file to have! <br>
@@ -78,8 +83,8 @@
 		 	<input type="submit" value="Submit" id="submit_button">
 
 		  </form>
-            {{ dropzone.load_js() }}
-            {{dropzone.config()}}
+    {{ dropzone.load_js() }}
+    {{dropzone.config()}}
 
 		</div>
 

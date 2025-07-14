@@ -36,8 +36,10 @@ def index():
 @app.route("/sendfile", methods=["POST"])
 def send_file():
     for key, f in request.files.items():
+        print(key, f.filename)
         if key.startswith('file'):
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+            print(f.filename)
     return 'upload complete'
 
 @app.route('/handle_data', methods=['POST'])
@@ -57,6 +59,7 @@ def handle_data():
         filenames = os.listdir("uploads/")
         filenames = sorted(filenames, key=modify_time_sort)
         return_dict = dict(filenames=filenames)
+        print(list(return_dict.values()))
         original_filename = list(return_dict.values())[-1]
 
     my_form = request.form
